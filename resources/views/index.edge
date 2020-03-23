@@ -8,12 +8,16 @@
 @section('content')
 
   <h1>All Jobs</h1>
+
+  @each(job in jobs)
+
   <div class="job-container">
       <div class="blank"></div>
       <div class="job-info">
-        <h3>Job Title</h3>
-        <p>Future job desc can go here</p>
+      <a href="{{job.link}}"><h3>{{job.title}}</h3></a>
+      <p>{{job.description}}</p>
       </div>
   </div>
+  @endeach
 
 @endsection
