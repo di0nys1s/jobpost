@@ -28,3 +28,12 @@ Route.get("/logout", async ({ auth, response }) => {
   await auth.logout();
   return response.redirect("/");
 });
+
+Route.get("/post-a-job", "JobController.userIndex");
+Route.post("/post-a-job", "JobController.create").validator("CreateJob");
+
+Route.group(() => {
+  Route.get("/delete/:id", "JobController.delete");
+  Route.get("/edit/:id", "JobController.edit");
+  Route.post("/update/:id", "JobController.update").validator("CreateJob");
+}).prefix("/post-a-job");
